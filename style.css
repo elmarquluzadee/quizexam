@@ -1,0 +1,119 @@
+.navbar {
+    padding-bottom: 0%;
+}
+
+.navbar-brand i {
+    color: #277BC0;
+    font-size: larger;
+}
+
+.exam-box {
+    width: 500px;
+    height: auto;
+    background-color: #eeeeee49;
+}
+
+.exam-box .card-header {
+    background-color: #94B49F;
+    color: rgb(0, 0, 0);
+}
+
+.exam-box .card-header span {
+    font-weight: 600;
+    font-size: large;
+}
+
+.question-text span {
+    font-weight: 400;
+    font-size: larger;
+}
+
+.option {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+    margin-top: 15px;
+    width: 100%;
+    height: 35px;
+    border: 1px solid rgba(65, 63, 63, 0.37);
+    border-radius: 3px;
+
+}
+
+.option:hover {
+    background-color: #8fdbeeab;
+    border: 1px solid #0400ff52;
+    transition: .2s;
+    cursor: pointer;
+}
+
+.option span {
+    padding-left: 8px;
+    font-weight: 500;
+
+}
+
+.option i {
+    padding-right: 8px;
+
+}
+
+.option b {
+    font-size: larger;
+}
+
+.correct {
+    background-color: #60afa2a8;
+}
+
+.incorrect {
+    background-color: #ff4a4a7c;
+}
+
+.card-body .quiz-box .option.disabled {
+    pointer-events: none;
+}
+
+
+
+.card-footer {
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+}
+
+.card-footer .btn_next.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+
+
+.card-footer .badge_item {
+    position: absolute;
+}
+
+.card-footer .badge {
+    width: 50px;
+    height: 20px;
+}
+
+.btn_start {
+    font-weight: 500;
+}
+
+.noshow {
+    opacity: 0;
+    display: none;
+}
+
+.active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.passive {
+    opacity: 0;
+    pointer-events: none;
+}
