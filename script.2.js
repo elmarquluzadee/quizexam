@@ -1,3 +1,5 @@
+
+
 const btn_start = document.querySelector("#btnStart");
 const btn_next = document.querySelector("#nextStart");
 const question_text = document.querySelector(".question-text");
@@ -15,7 +17,8 @@ function Quiz(questionText, answerOption, correctAnswer) {
     this.correctAnswer = correctAnswer;
 };
 
-Quiz.prototype.checkAnswer = (answer) => answer === this.correctAnswer;
+Quiz.prototype.checkAnswer = function (answer) 
+{return answer === this.correctAnswer};
 
 btn_start.addEventListener('click', () => {
     displayQuiz();
