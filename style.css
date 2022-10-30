@@ -117,3 +117,8 @@
     opacity: 0;
     pointer-events: none;
 }
+
+.bg-primary {
+
+    color: aliceblue;
+}
