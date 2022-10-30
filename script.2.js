@@ -4,10 +4,13 @@ const question_text = document.querySelector(".question-text");
 const quiz_box = document.querySelector(".quiz-box");
 const over_id = document.querySelector("#overId");
 const cards_id = document.querySelector("#cards");
-
+const result_item = document.querySelector(".result-item");
 
 let count = 0;
 let selectVariant = null;
+let selectCount;
+let trueAnswer = 0;
+let falseAnswer = 0;
 
 function Quiz(question, answers, correctVariant) {
     this.question = question;
@@ -23,18 +26,6 @@ btn_start.addEventListener('click', () => {
     displayQuiz();
 });
 
-btn_next.addEventListener('click', () => {
-   if (count < questions.length - 1) {
-        count++;
-        displayQuiz();
-        btn_next.classList.remove("active");
-   } else {
-        cards_id.classList.add("noshow");
-        over_id.classList.remove("noshow");
-        displayQuiz();
-    }
-});
-
 const displayQuiz = () => {
     let html = '';
     let text = `<span><b>${questions[count].question}</b> sözünün ingiliscə qarşılqı nədir</span>`;
@@ -44,49 +35,44 @@ const displayQuiz = () => {
      };
     quiz_box.innerHTML = html;
     question_text.innerHTML = text;
-
+   
 };
 
 chooseVariant = (element,count, option) => {
          btn_next.classList.add("active");  
          quiz_box.querySelectorAll(".option").forEach(variant => variant.classList.remove("bg-primary"))
          element.classList.add("bg-primary");
-
          selectVariant = option;
-
-    //     displayQuiz();
-        // this.classList.add("bg-warning");
-      //  answer.classList.add("bg-danger");
-
-        // const opr = quiz_box.querySelectorAll(".option");
-        
-          
-          
-        // for(let a of opr){
-        //     console.log(a);
-        //     a.classList.add("bg-danger");}
-     
-        // if (questions[count].checkAnswer(option) === true) {
-        //     console.log("true");
-        //     }else {
-        //     console.log("false");
-        //     };
-
-        // console.log(option)
+         selectCount = count
 }
- 
-btn_next.addEventListener("click",(e) =>
+
+btn_next.addEventListener("click",() =>
 {
-    if(selectVariant == dogruVariant){
-        
-    }
-})
+    if(questions[selectCount].checkAnswer(selectVariant) === true){
+        trueAnswer++;
+        }else{
+        falseAnswer++;
+        }
+});
 
- // const opr = quiz_box.querySelectorAll(".option");
-   
-    // console.log(option)
+function resultDisplay()
+{
+    let display =  `  <div class="d-flex row">
+    <h5 class="col-5 mx-2 ">dogru: <span>${trueAnswer}</span></h5>
+    <h5 class="col-5 mx-2">yalnis: <span>${falseAnswer}</span></h5>
+    </div>`;
+    result_item.innerHTML = display ;
+};
 
-    // for(let a of opr)
-    // {  
-        
-    // }
+btn_next.addEventListener('click', () => {
+    if (count < questions.length - 1) {
+         count++;
+         displayQuiz();
+         btn_next.classList.remove("active");
+    } else {
+         cards_id.classList.add("noshow");
+         over_id.classList.remove("noshow");   
+         displayQuiz();
+         resultDisplay();
+     }
+ });
