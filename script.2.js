@@ -73,8 +73,8 @@ btn_next.addEventListener("click",() =>
 function resultDisplay()
 {
     let display =  `<div class="d-flex row">
-    <h5 class="col-5 mx-2 ">correct: <span>${correctAnswers}</span><i class=" correct mx-2 fa-sharp fa-solid fa-circle-check"></i></h5>
-    <h5 class="col-5 mx-2">wrong: <span>${wrongAnswers}</span><i class=" wrong mx-2 fa-sharp fa-solid fa-circle-xmark"></i></h5>
+    <h5 class="col-6 mx-2 ">correct: <span>${correctAnswers}</span><i class=" correct mx-2 fa-sharp fa-solid fa-circle-check"></i></h5>
+    <h5 class="col-6 mx-2">wrong: <span>${wrongAnswers}</span><i class=" wrong mx-2 fa-sharp fa-solid fa-circle-xmark"></i></h5>
     </div>`;
     result_item.innerHTML = display;
 };
