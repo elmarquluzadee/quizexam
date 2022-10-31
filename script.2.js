@@ -5,12 +5,14 @@ const quiz_box = document.querySelector(".quiz-box");
 const over_id = document.querySelector("#overId");
 const cards_id = document.querySelector("#cards");
 const result_item = document.querySelector(".result-item");
+const progressBar_footer = document.querySelector("#progressBar");
 
 let count = 0;
 let selectVariant = null;
 let selectCount;
-let trueAnswer = 0;
-let falseAnswer = 0;
+let correctAnswers = 0;
+let wrongAnswers = 0;
+
 
 function Quiz(question, answers, correctVariant) {
     this.question = question;
@@ -29,13 +31,26 @@ btn_start.addEventListener('click', () => {
 const displayQuiz = () => {
     let html = '';
     let text = `<span><b>${questions[count].question}</b> sözünün ingiliscə qarşılqı nədir</span>`;
+    const calcWidthProgeress = (100 / questions.length) * (correctAnswers+wrongAnswers);
+         let progressBar = ` <div class="progress">
+                          <div 
+                          style="width:${calcWidthProgeress}%" 
+                          class="progress-bar progress-bar-striped progress-bar-animated" 
+                          role="progressbar"  
+                          aria-valuenow="25" 
+                          aria-valuemin=""
+                          aria-valuemax="100">
+                          </div>
+                          </div>`;
 
     for (let a in questions[count].answers) {
         html += `<div id="${a}" onclick='chooseVariant(this,${count},"${a}")'; class="option"><span"><b> &nbsp ${a}:</b> &nbsp ${questions[count].answers[a]}</span></div>`;
      };
+
     quiz_box.innerHTML = html;
     question_text.innerHTML = text;
-   
+
+    progressBar_footer.innerHTML = progressBar;
 };
 
 chooseVariant = (element,count, option) => {
@@ -49,19 +64,19 @@ chooseVariant = (element,count, option) => {
 btn_next.addEventListener("click",() =>
 {
     if(questions[selectCount].checkAnswer(selectVariant) === true){
-        trueAnswer++;
+        correctAnswers++;
         }else{
-        falseAnswer++;
+        wrongAnswers++;
         }
 });
 
 function resultDisplay()
 {
-    let display =  `  <div class="d-flex row">
-    <h5 class="col-5 mx-2 ">dogru: <span>${trueAnswer}</span></h5>
-    <h5 class="col-5 mx-2">yalnis: <span>${falseAnswer}</span></h5>
+    let display =  `<div class="d-flex row">
+    <h5 class="col-5 mx-2 ">correct: <span>${correctAnswers}</span><i class=" correct mx-2 fa-sharp fa-solid fa-circle-check"></i></h5>
+    <h5 class="col-5 mx-2">wrong: <span>${wrongAnswers}</span><i class=" wrong mx-2 fa-sharp fa-solid fa-circle-xmark"></i></h5>
     </div>`;
-    result_item.innerHTML = display ;
+    result_item.innerHTML = display;
 };
 
 btn_next.addEventListener('click', () => {
@@ -69,10 +84,12 @@ btn_next.addEventListener('click', () => {
          count++;
          displayQuiz();
          btn_next.classList.remove("active");
-    } else {
+       } else {
          cards_id.classList.add("noshow");
          over_id.classList.remove("noshow");   
-         displayQuiz();
+         btn_next.classList.remove("active");
          resultDisplay();
-     }
+         displayQuiz();
+       }
  });
+

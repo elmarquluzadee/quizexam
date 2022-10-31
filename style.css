@@ -122,3 +122,13 @@
 
     color: aliceblue;
 }
+
+.correct {
+    color: green;
+    background-color: #fff;
+}
+
+.wrong {
+    color: red;
+    background-color: #fff;
+}

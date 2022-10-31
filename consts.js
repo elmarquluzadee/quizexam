@@ -1,32 +1,32 @@
 const questions = [
-    new Quiz("sual 1 ", {
-        a: "1",
-        b: "sad",
-        c: "asda"
-    }, "a"),
-    new Quiz("sual 2 ", {
-        a: "2",
-        b: "sad",
-        c: "asda"
-    }, "b"),
-    new Quiz("sual 3 ", {
-        a: "3",
-        b: "sad",
-        c: "asda"
+    new Quiz("patron", {
+        a: "boyfriend",
+        b: "bowl",
+        c: "boss"
     }, "c"),
-    new Quiz("sual 4 ", {
-        a: "4",
-        b: "sad",
-        c: "asda"
-    }, "b"),
-    new Quiz("sual 5 ", {
-        a: "5",
-        b: "sad",
-        c: "asda"
+    new Quiz("bestekar ", {
+        a: "composer",
+        b: "car",
+        c: "confuse"
     }, "a"),
-    new Quiz("sual 6 ", {
-        a: "6",
+    new Quiz("qorxmaq", {
+        a: "fly",
         b: "sad",
-        c: "asda"
-    }, "a")
+        c: "afraid"
+    }, "c"),
+    new Quiz("unutmaq", {
+        a: "left",
+        b: "leave",
+        c: "lesson"
+    }, "b"),
+    new Quiz("pul", {
+        a: "money",
+        b: "month",
+        c: "mask"
+    }, "a"),
+    new Quiz("darixmaq", {
+        a: "model",
+        b: "miss",
+        c: "mix"
+    }, "b")
 ];
