@@ -132,3 +132,7 @@
     color: red;
     background-color: #fff;
 }
+
+.question-text {
+    height: 60px;
+}
