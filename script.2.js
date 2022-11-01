@@ -81,6 +81,27 @@ function resultDisplay()
     <h5 class="col-6 mx-2"><i class=" wrong mx-2 fa-sharp fa-solid fa-circle-xmark"></i> wrong:<span>${wrongAnswers}</span></h5>
     </div>`;
     result_item.innerHTML = display;
+
+    progressBarDisplay();
+    function progressBarDisplay(){
+      let correctAnswersBar = correctAnswers * 100/questions.length
+      
+        let progressValue = 0;
+        let progressEndValue = Math.round(correctAnswersBar);
+        let speed = 20;
+        
+        let progress = setInterval(() =>{
+           progressValue++;
+           valueContainer.textContent = `${progressValue}%`;
+           progressBar.style.background = `conic-gradient(
+              #4d5bf9 ${progressValue *3.6}deg,
+              #cadcff ${progressValue * 3.6}deg  
+           )`
+           if(progressValue == progressEndValue){
+              clearInterval(progress);
+           }
+        } ,speed);}
+     
 };
 
 btn_next.addEventListener('click', () => {
@@ -92,30 +113,7 @@ btn_next.addEventListener('click', () => {
          cards_id.classList.add("noshow");
          over_id.classList.remove("noshow");   
          btn_next.classList.remove("active");
-         progressBarDisplay();
          resultDisplay();
          displayQuiz();
-         
        }
  });
-
-//progressbar
-function progressBarDisplay(){
-let correctAnswersBar = correctAnswers * 100/questions.length
-
-  let progressValue = 0;
-  let progressEndValue = Math.round(correctAnswersBar);
-  let speed = 20;
-
-let progress = setInterval(() =>{
-     progressValue++;
-     valueContainer.textContent = `${progressValue}%`;
-     progressBar.style.background = `conic-gradient(
-        #4d5bf9 ${progressValue *3.6}deg,
-        #cadcff ${progressValue * 3.6}deg  
-     )`
-     if(progressValue == progressEndValue){
-        clearInterval(progress);
-     }
-} ,speed);}
-//  progressBarDisplay();
