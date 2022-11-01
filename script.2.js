@@ -5,7 +5,11 @@ const quiz_box = document.querySelector(".quiz-box");
 const over_id = document.querySelector("#overId");
 const cards_id = document.querySelector("#cards");
 const result_item = document.querySelector(".result-item");
-const progressBar_footer = document.querySelector("#progressBar");
+const progressBar_footer = document.querySelector("#progressBarId");
+let progressBar = document.querySelector(".circular-progress");
+let valueContainer = document.querySelector(".value-container");
+
+
 
 let count = 0;
 let selectVariant = null;
@@ -49,8 +53,8 @@ const displayQuiz = () => {
 
     quiz_box.innerHTML = html;
     question_text.innerHTML = text;
-
     progressBar_footer.innerHTML = progressBar;
+   
 };
 
 chooseVariant = (element,count, option) => {
@@ -88,8 +92,30 @@ btn_next.addEventListener('click', () => {
          cards_id.classList.add("noshow");
          over_id.classList.remove("noshow");   
          btn_next.classList.remove("active");
+         progressBarDisplay();
          resultDisplay();
          displayQuiz();
+         
        }
  });
 
+//progressbar
+function progressBarDisplay(){
+let correctAnswersBar = correctAnswers * 100/questions.length
+
+  let progressValue = 0;
+  let progressEndValue = Math.round(correctAnswersBar);
+  let speed = 20;
+
+let progress = setInterval(() =>{
+     progressValue++;
+     valueContainer.textContent = `${progressValue}%`;
+     progressBar.style.background = `conic-gradient(
+        #4d5bf9 ${progressValue *3.6}deg,
+        #cadcff ${progressValue * 3.6}deg  
+     )`
+     if(progressValue == progressEndValue){
+        clearInterval(progress);
+     }
+} ,speed);}
+//  progressBarDisplay();

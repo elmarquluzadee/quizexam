@@ -75,8 +75,6 @@
     pointer-events: none;
 }
 
-
-
 .card-footer {
     align-items: center;
     display: flex;
@@ -135,4 +133,47 @@
 
 .question-text {
     height: 60px;
+}
+
+/* progress bar */
+*,
+*:before,
+*:after {
+    padding: 0%;
+    margin: 0%;
+    box-sizing: border-box;
+}
+
+.containerProgres {
+    height: 200px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    display: grid;
+    place-items: center;
+}
+
+.circular-progress {
+    position: relative;
+    height: 150px;
+    width: 150px;
+    background-color: orange;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.circular-progress::before {
+    content: "";
+    position: absolute;
+    height: 84%;
+    width: 84%;
+    background-color: #ffffff;
+    border-radius: 50%;
+}
+
+.value-container {
+    position: relative;
+    font-family: "Poppins", sans-serif;
+    font-size: 50px;
+    color: #231c3d;
 }
